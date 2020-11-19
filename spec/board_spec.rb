@@ -43,15 +43,14 @@ describe Board do
         position = 1
         player_1 = player.piece
         board.move(player_1, 1)
-        expect { board.move(player_1, position) }.to change { board.grid[4][6] }.to eq player_1
+        expect { board.move(player_1, position) }.to change { board.grid[4][0] }.to eq player_1
       end
 
       it 'drops on top of two existing pieces' do
         position = 1
         player_1 = player.piece
         2.times { board.move(player_1, 1)}
-        # board.move(player_1, 1)
-        expect { board.move(player_1, position) }.to change { board.grid[3][6] }.to eq player_1
+        expect { board.move(player_1, position) }.to change { board.grid[3][0] }.to eq player_1
       end
       
     end
@@ -61,7 +60,7 @@ describe Board do
         allow(player).to receive(:piece).and_return('O')
       end
 
-      xit "raises an error if there are 6 existing pieces" do
+      it "raises an error if there are 6 existing pieces" do
         position = 1
         player_1 = player.piece
         6.times { board.move(player_1, position) }
