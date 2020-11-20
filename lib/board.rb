@@ -20,18 +20,17 @@ class Board
    h
   end
 
-# TODO: 
-# horizontal pattern check
-# fix this shit
-
-  def horizontal
-    player_piece = 'O'
-  
-    6.times do |i|
-
+  def horizontal(piece)
+    count = 0
+   grid.each do |layer|
+    layer.each do |i|
+     i == piece ? count += 1 : count = 0
+      return true if count >= 4
     end
+   end
+   return false
   end
-  
+
 end
 
-# p Board.new.grid
+# p Board.new.horizontal
