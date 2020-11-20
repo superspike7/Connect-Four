@@ -1,7 +1,11 @@
 class Board
   attr_accessor :grid
-  def initialize
-    @grid = Array.new(6) {Array.new(7) { '.' } }
+  def initialize(grid = make_grid)
+    @grid = grid 
+  end
+
+  def make_grid
+    Array.new(6) {Array.new(7) { '.' } }
   end
 
   def move(piece, position)

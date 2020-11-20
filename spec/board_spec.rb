@@ -65,33 +65,27 @@ describe Board do
       context '5th layer horizonal pattern' do
         it 'returns true if there is 4 consecutive pieces in a horizontal pattern' do
           player_piece = 'O'
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # O O O O . . .
-          board.move('O', 1)
-          board.move('O', 2)
-          board.move('O', 3)
-          board.move('O', 4)
+          board.grid = [
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['O', 'O', 'O', 'O', '.', '.', '.']
+          ]
           expect(board.horizontal(player_piece)).to be true
         end
         
         it 'returns false if there is no 4 consecutive horizional pattern' do
           player_piece = 'O'
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # O O O . O O O
-          board.move('O', 1)
-          board.move('O', 2)
-          board.move('O', 3)
-          board.move('O', 5)
-          board.move('O', 6)
-          board.move('O', 7)
+          board.grid = [
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['O', '.', 'O', 'O', 'X', 'O', 'O']
+          ]
           expect(board.horizontal(player_piece)).to be false 
         end
       end
@@ -99,76 +93,31 @@ describe Board do
       context '4th layer horizontal pattern' do
         it 'recognizes the 1234 pattern' do
           player_piece = 'X'
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # X X X X . . .
-          # O O X O . . .
-          board.move('O', 1)
-          board.move('O', 2)
-          board.move('X', 3)
-          board.move('O', 4)
-          board.move('X', 1)
-          board.move('X', 2)
-          board.move('X', 3)
-          board.move('X', 4)
+          board.grid = [
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['X', 'X', 'X', 'X', '.', '.', '.'],
+            ['O', 'O', 'X', 'O', 'X', 'O', 'O']
+          ]
           expect(board.horizontal(player_piece)).to be true
         end
       end
 
         it 'returns false when there is no 4 consecutive piece with a horizontal pattern' do
           player_piece = 'X'
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # X O X X . . .
-          # O O X O . . .
-          board.move('O', 1)
-          board.move('O', 2)
-          board.move('X', 3)
-          board.move('O', 4)
-          board.move('X', 1)
-          board.move('O', 2)
-          board.move('X', 3)
-          board.move('X', 4)
+          board.grid = [
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.', '.'],
+            ['X', 'O', 'X', 'X', '.', '.', '.'],
+            ['O', 'O', 'X', 'O', 'X', 'O', 'O']
+          ]
           expect(board.horizontal(player_piece)).to be false
         end
     end
   end
 end
 
-
-
-# use piece = '0'
-=begin
-grid = [
-  ['','','','','','',''],
-  ['','','','','','',''],
-  ['','','','','','',''],
-  ['','','','','','',''],
-  ['','','','','','',''],
-  ['','','','','','',''],
-  [piece, piece, piece, piece,'','',''],
-]
-=end
-# instead of 
-=begin
-  
-          player_piece = 'X'
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # . . . . . . .
-          # X O X X . . .
-          # O O X O . . .
-          board.move('O', 1)
-          board.move('O', 2)
-          board.move('X', 3)
-          board.move('O', 4)
-          board.move('X', 1)
-          board.move('O', 2)
-          board.move('X', 3)
-          board.move('X', 4)
-=end
