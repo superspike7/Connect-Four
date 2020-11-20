@@ -141,3 +141,34 @@ end
 
 
 
+# use piece = '0'
+=begin
+grid = [
+  ['','','','','','',''],
+  ['','','','','','',''],
+  ['','','','','','',''],
+  ['','','','','','',''],
+  ['','','','','','',''],
+  ['','','','','','',''],
+  [piece, piece, piece, piece,'','',''],
+]
+=end
+# instead of 
+=begin
+  
+          player_piece = 'X'
+          # . . . . . . .
+          # . . . . . . .
+          # . . . . . . .
+          # . . . . . . .
+          # X O X X . . .
+          # O O X O . . .
+          board.move('O', 1)
+          board.move('O', 2)
+          board.move('X', 3)
+          board.move('O', 4)
+          board.move('X', 1)
+          board.move('O', 2)
+          board.move('X', 3)
+          board.move('X', 4)
+=end
