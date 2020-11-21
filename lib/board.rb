@@ -24,7 +24,7 @@ class Board
    h
   end
 
-  def horizontal(piece)
+  def horizontal?(piece)
     count = 0
    grid.each do |layer|
     layer.each do |i|
@@ -35,6 +35,16 @@ class Board
    return false
   end
 
-end
+  def vertical?(piece)
+    count = 0
+    grid = @grid.transpose
+    grid.each do |layer|
+      layer.each do |i|
+        i == piece ? count += 1 : count = 0
+        return true if count >= 4
+      end
+    end
+    return false
+  end
 
-# p Board.new.horizontal
+end
