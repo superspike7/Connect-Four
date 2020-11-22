@@ -174,5 +174,22 @@ describe Board do
       end
     end
   end
+
+  describe '#diagonal?' do
+    context 'when there is a diagonal pattern visible' do
+      it 'returns true when there is a diagonal visible' do
+        player_piece = 'O'
+        board.grid = [
+          ['.', '.', '.', '.', '.', '.', 'O'],
+          ['.', '.', '.', '.', '.', '.', 'X'],
+          ['.', '.', '.', 'O', '.', '.', 'O'],
+          ['.', '.', 'O', '.', '.', '.', 'O'],
+          ['.', 'O', '.', '.', '.', '.', 'X'],
+          ['O', 'O', 'X', 'O', 'X', 'O', 'O']
+        ]
+        expect(board.diagonal_check?(player_piece)).to be true 
+      end
+    end
+  end
 end
 
