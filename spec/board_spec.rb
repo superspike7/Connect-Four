@@ -189,6 +189,19 @@ describe Board do
         ]
         expect(board.diagonal_check?(player_piece)).to be true 
       end
+      it 'returns false when there is no diagonal visible' do
+        
+        player_piece = 'O'
+        board.grid = [
+          ['.', '.', '.', '.', '.', '.', 'O'],
+          ['.', '.', '.', '.', '.', '.', 'X'],
+          ['.', '.', '.', 'O', '.', '.', 'O'],
+          ['.', '.', 'x', '.', '.', '.', 'O'],
+          ['.', 'O', '.', '.', '.', '.', 'X'],
+          ['O', 'O', 'X', 'O', 'X', 'O', 'O']
+        ]
+        expect(board.diagonal_check?(player_piece)).to be false 
+      end
     end
   end
 end
