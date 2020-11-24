@@ -24,7 +24,7 @@ class Board
    h
   end
 
-  def horizontal?(piece)
+  def horizontal_check?(piece)
     count = 0
    grid.each do |layer|
     layer.each do |i|
@@ -35,7 +35,7 @@ class Board
    return false
   end
 
-  def vertical?(piece)
+  def vertical_check?(piece)
     count = 0
     grid = @grid.transpose
     grid.each do |layer|
@@ -56,8 +56,7 @@ class Board
   end
 
  def diagonals_list
-# TODO : 
-# write constant diagonals 
+# constant diagonals 
 g = @grid
   [
     [g[5][0],g[4][1],g[3][2],g[2][3],g[1][4],g[0][5]],
