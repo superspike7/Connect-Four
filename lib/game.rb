@@ -4,9 +4,7 @@ require_relative './player.rb'
 class Game
   attr_accessor :board
 
-  def initialize(player_1, player_2)
-    @player_1 = player_1
-    @player_2 = player_2
+  def initialize
     @board = Board.new
   end
 
@@ -24,13 +22,28 @@ class Game
   end
 
   def play
+    intro
     until check_board
       board.show_board
       player_prompt(@player_1)
-      return "#{@player_1.name} wins!" if check_board
       board.show_board
+      return "#{@player_1.name} wins!" if check_board
       player_prompt(@player_2)
     end
+  end
+
+  def intro
+    puts "welcome to connect four!"
+    puts "name for player 1:"
+    player1 = gets.chomp
+    puts "choose your piece: 'O' or 'X' "
+    piece1 = gets.chomp
+    @player_1 = Player.new(player1, piece1)
+    puts "name for player 2:"
+    player2 = gets.chomp
+    puts "choose your piece: 'O' or 'X' "
+    piece2 = gets.chomp
+    @player_2 = Player.new(player2, piece2)
   end
 
   def player_prompt(player) 
@@ -55,7 +68,5 @@ class Game
 
 end
 
-spike = Player.new('spike', 'O')
-vinz = Player.new('vinz', 'X')
 
-Game.new(spike, vinz).play
+Game.new.play

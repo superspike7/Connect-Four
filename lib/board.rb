@@ -51,7 +51,6 @@ class Board
   def diagonal_check?(piece)
    arr = diagonals_list 
    four_in_a_row = arr.select { |row| row.count(piece) > 3 }
-   p four_in_a_row
    return true unless four_in_a_row.empty?
    false
   end
