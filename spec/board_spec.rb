@@ -58,7 +58,7 @@ describe Board do
         position = 1
         player_1 = player.piece
         6.times { board.move(player_1, position) }
-        expect { board.move(player_1, position) }.to raise_error("position is already occupied")
+        expect { board.move(player_1, position) }.to raise_error("column is full")
       end
     end
   describe '#horizontal_check?' do

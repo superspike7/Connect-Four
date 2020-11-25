@@ -19,7 +19,7 @@ class Board
   def validate(h, pos)
    until grid[h][pos] == '.' do 
     h -= 1
-    raise "position is already occupied" if h < 0
+    raise "column is full" if h < 0
    end
    h
   end
