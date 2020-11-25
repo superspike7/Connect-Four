@@ -58,10 +58,10 @@ describe Board do
         position = 1
         player_1 = player.piece
         6.times { board.move(player_1, position) }
-        expect { board.move(player_1, position) }.to raise_error("position is full")
+        expect { board.move(player_1, position) }.to raise_error("position is already occupied")
       end
     end
-  describe '#horizontal?' do
+  describe '#horizontal_check?' do
       context '5th layer horizonal pattern' do
         it 'returns true if there is 4 consecutive pieces in a horizontal pattern' do
           player_piece = 'O'
@@ -73,7 +73,7 @@ describe Board do
             ['.', '.', '.', '.', '.', '.', '.'],
             ['O', 'O', 'O', 'O', '.', '.', '.']
           ]
-          expect(board.horizontal?(player_piece)).to be true
+          expect(board.horizontal_check?(player_piece)).to be true
         end
         
         it 'returns false if there is no 4 consecutive horizional pattern' do
@@ -86,7 +86,7 @@ describe Board do
             ['.', '.', '.', '.', '.', '.', '.'],
             ['O', '.', 'O', 'O', 'X', 'O', 'O']
           ]
-          expect(board.horizontal?(player_piece)).to be false 
+          expect(board.horizontal_check?(player_piece)).to be false 
         end
       end
       
@@ -101,7 +101,7 @@ describe Board do
             ['X', 'X', 'X', 'X', '.', '.', '.'],
             ['O', 'O', 'X', 'O', 'X', 'O', 'O']
           ]
-          expect(board.horizontal?(player_piece)).to be true
+          expect(board.horizontal_check?(player_piece)).to be true
         end
       end
 
@@ -115,12 +115,12 @@ describe Board do
             ['X', 'O', 'X', 'X', '.', '.', '.'],
             ['O', 'O', 'X', 'O', 'X', 'O', 'O']
           ]
-          expect(board.horizontal?(player_piece)).to be false
+          expect(board.horizontal_check?(player_piece)).to be false
        end
     end
   end
 
-  describe '#vertical?' do
+  describe '#vertical_check?' do
     context 'first row' do
       it 'returns true when there is 4 piece of consecutive vertical pattern' do
         player_piece = 'O'
@@ -132,7 +132,7 @@ describe Board do
           ['O', '.', '.', '.', '.', '.', '.'],
           ['O', 'O', 'X', 'O', 'X', 'O', 'O']
         ]
-        expect(board.vertical?(player_piece)).to be true
+        expect(board.vertical_check?(player_piece)).to be true
       end
       it 'returns false when there are no vertical pattern visible' do
         player_piece = 'O'
@@ -144,7 +144,7 @@ describe Board do
           ['O', '.', '.', '.', '.', '.', '.'],
           ['O', 'O', 'X', 'O', 'X', 'O', 'O']
         ]
-        expect(board.vertical?(player_piece)).to be false 
+        expect(board.vertical_check?(player_piece)).to be false 
       end
     end
     context '7th row' do
@@ -158,7 +158,7 @@ describe Board do
           ['.', '.', '.', '.', '.', '.', 'X'],
           ['.', 'O', 'X', 'O', 'X', 'O', 'O']
         ]
-        expect(board.vertical?(player_piece)).to be true 
+        expect(board.vertical_check?(player_piece)).to be true 
       end
       it 'returns false when there is no vertical pattern visible' do
         player_piece = 'O'
@@ -170,7 +170,7 @@ describe Board do
           ['.', '.', '.', '.', '.', '.', 'X'],
           ['.', 'O', 'X', 'O', 'X', 'O', 'O']
         ]
-        expect(board.vertical?(player_piece)).to be false 
+        expect(board.vertical_check?(player_piece)).to be false 
       end
     end
   end

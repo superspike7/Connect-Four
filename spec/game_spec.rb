@@ -8,7 +8,6 @@ describe Game do
   let(:player_two) { double("Player", :piece => 'X') }
   let(:board) { game.instance_variable_get(:@board) }
   describe '#win?' do
-    context 'when player_one wins' do
       it 'returns true player_one wins' do
         board.grid = [
             ['.', '.', '.', '.', '.', '.', '.'],
@@ -42,6 +41,5 @@ describe Game do
         ]
         expect(game.win?).to be false 
       end
-    end
   end
 end
